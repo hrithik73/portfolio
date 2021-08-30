@@ -17,7 +17,7 @@
 export const redirects = {
   twt: {
     title: 'Twitter',
-    url: 'https://twitter.com/_hrithik73',
+    url: 'https://twitter.com/hrithik73_',
   },
   insta: {
     title: 'Instagram',
