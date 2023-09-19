@@ -18,4 +18,5 @@ export default {
     </footer>
   ),
   darkMode: true,
+  primaryHue: 130,
 };

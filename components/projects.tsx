@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { projects } from '../data/site';
 
-import { GithubIcon, ArrowUpRight, ArrowUpRightFromCircle } from 'lucide-react';
+import { GithubIcon, ArrowUpRight } from 'lucide-react';
 
 interface IProjectCardProps {
   title: string;
