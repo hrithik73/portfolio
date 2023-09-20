@@ -7,7 +7,7 @@ const Avatar = () => {
         src='https://github.com/hrithik73.png'
         height={100}
         width={100}
-        className='rounded-full absolute left-5'
+        className='rounded-full absolute left-0'
         alt='Profile picture of Hritik Singh'
       />
     </div>
