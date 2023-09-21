@@ -1,0 +1,124 @@
+---
+title: How to create boilerplate in react-native
+date: 2023/09/21
+description: A detailed and clear guide on how to create a boilerplate
+tag: react,react-native , boilerplate , starter , rn-starter , app-dev
+author: Hritik Singh
+---
+
+So i have been working with react native since a long and everytime
+i start a new project i keep doing the same steps while configuring the libraries
+so i thought of creating a boilerplate for myself with commonly used libraries which i user in almost all of my project
+
+This is a guide on how to create yours using `react-native-cli`
+
+## Using react-native-cli
+
+Using react native cli
+
+### Step 1 :
+
+Create a new folder
+
+```bash
+mkdir rn-boilerplate
+cd rn-boilerplate
+```
+
+Here `rn-boilerplate` is the name of your project you can name anything
+
+now run `npm init` command
+
+```bash
+npm init
+```
+
+it will open the prompt enter the necessary details
+
+```json
+{
+  "name": "rn-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate for you next react-native app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hritik Singh",
+  "license": "ISC"
+}
+```
+
+### Step 2 :
+
+Now create a file `template.config.js` and `script.js`
+
+You can do it by terminal or gui
+
+```bash
+touch template.config.js script.js
+```
+
+The template config file consist the details about the template name, placeholder etc,
+and script.js will execute after the successfull template initialization
+
+Add following in the `template.config.js`
+
+```js
+module.exports = {
+  // Placeholder name that will be replaced in package.json, index.json, android/, ios/ for a project name.
+  placeholderName: 'ProjectName',
+
+  // Placeholder title that will be replaced in values.xml and Info.plist with title provided by the user.
+  // We default this value to 'Hello App Display Name', which is default placeholder in react-native template.
+  titlePlaceholder: 'Hello App Display Name',
+
+  // Directory with the template which will be copied and processed by React Native CLI. Template directory should have package.json with all dependencies specified, including `react-native`.
+  templateDir: './template',
+
+  // Path to script, which will be executed after initialization process, but before installing all the dependencies specified in the template. This script runs as a shell script but you can change that (e.g. to Node) by using a shebang (see example custom template).
+  postInitScript: './script.js',
+};
+```
+
+postInitScript is optioonal if you don't want to execute anything after initialization you can simply just comment the 3rd line
+
+inside `script.js` add this
+
+```js
+#!/usr/bin/env node
+
+console.log('This is post init script');
+```
+
+### Step 3 :
+
+Generate the a new Project with `Placeholder` name in `template` directory , to do than you can simply run the
+following command
+
+```bash
+npx react-native init ProjectName --directory template
+```
+
+### Step 3 :
+
+- Go to template
+- Run the application in `android` and `ios`
+- Make change
+
+### Step 4 :
+
+Now to generate a new project using your template you have to host it on github on a public repository
+Just push the code to github
+
+### Step 5 :
+
+Create a new project using your boilerplate by using `url`
+
+```bash
+npx react-native init YourAppName --template https://github.com/hrithik73/rn-boilerplate
+```
+
+Replace the YourAppName to whatever the application name you want and the github url will be your boilerplate's github url
+
+Note : For some reason having the issue with postInitScript , if you you also face this just comment for now
