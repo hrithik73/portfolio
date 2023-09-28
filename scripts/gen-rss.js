@@ -6,7 +6,7 @@ const matter = require('gray-matter');
 async function generate() {
   const feed = new RSS({
     title: 'Hritik Singh',
-    site_url: 'https://hritik.fyi.com',
+    site_url: 'https://hritik.fyi',
     feed_url: 'https://hritik.fyi/feed.xml',
   });
 
