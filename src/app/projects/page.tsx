@@ -21,12 +21,11 @@ const ProjectCard = ({
 }: IProjectCardProps) => {
   return (
     <a href={link} className='cursor-pointer' target='_blank'>
-      <div className='border-slate-600 border-[0.5px] rounded p-5 max-w-md my-5'>
+      <div className='border-slate-600 hover:border-[0.5px] rounded p-5 my-5 dark:bg-slate-800  bg-gray-50'>
         <h3 className='text-base font-bold'>{title}</h3>
         <p>{description}</p>
         <a href={githubLink} className='flex gap-2 my-2' target='_blank'>
           <GithubIcon />
-          {/* <p>{githubLink}</p> */}
           <p>{techStack}</p>
         </a>
       </div>
@@ -36,7 +35,7 @@ const ProjectCard = ({
 
 export default function Projects() {
   return (
-    <div className='grid md:grid-cols-2 gap-x-5'>
+    <div className=''>
       {projects.map((item) => {
         return (
           <ProjectCard
