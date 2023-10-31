@@ -39,6 +39,7 @@ export default function Projects() {
       {projects.map((item) => {
         return (
           <ProjectCard
+            key={item.title}
             title={item.title}
             link={item.link}
             githubLink={item.github}
