@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '~//components/theme-provider';
-import { Analytics } from '~//components/analytics';
+import { ThemeProvider } from '~/components/theme-provider';
+import { Analytics } from '~/components/analytics';
 import Header from '~/components/ui/header';
 import Footer from '~/components/ui/footer';
 
