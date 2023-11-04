@@ -1,7 +1,5 @@
-# Next.js + Contentlayer
+My personal portfolio built with content-layer
 
-A template with Next.js 13 app dir, Contentlayer, Tailwind CSS and dark mode.
-
-https://next-contentlayer.vercel.app
-
-
+- NextJS 13 (app router)
+- Tailwind
+- ContentLayer
