@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import { Mdx } from '~//components/mdx-components';
 
 interface PostProps {
-  params: {
-    slug: string[];
+  readonly params: {
+    slug: readonly string[];
   };
 }
 
