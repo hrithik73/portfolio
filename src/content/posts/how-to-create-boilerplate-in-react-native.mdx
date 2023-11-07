@@ -6,15 +6,13 @@ tag: react,react-native , boilerplate , starter , rn-starter , app-dev
 author: Hritik Singh
 ---
 
-So i have been working with react native since a long and everytime
-i start a new project i keep doing the same steps while configuring the libraries
-so i thought of creating a boilerplate for myself with commonly used libraries which i user in almost all of my project
+So, I have been working with React Native for a long time, and every time I start a new project,
+I find myself repeating the same steps when configuring the libraries.
+So, I thought of creating a boilerplate for myself with commonly used libraries that I use in almost all of my projects.
 
 This is a guide on how to create yours using `react-native-cli`
 
 ## Using react-native-cli
-
-Using react native cli
 
 ### Step 1 :
 
@@ -25,19 +23,19 @@ mkdir rn-boilerplate
 cd rn-boilerplate
 ```
 
-Here `rn-boilerplate` is the name of your project you can name anything
+You can name your project anything you like; here, we've used `rn-starter`
 
-now run `npm init` command
+Now run `npm init` command
 
 ```bash
 npm init
 ```
 
-it will open the prompt enter the necessary details
+This will open a prompt where you can enter the necessary details:
 
 ```json
 {
-  "name": "rn-boilerplate",
+  "name": "rn-starter",
   "version": "1.0.0",
   "description": "A boilerplate for you next react-native app",
   "main": "index.js",
@@ -51,16 +49,14 @@ it will open the prompt enter the necessary details
 
 ### Step 2 :
 
-Now create a file `template.config.js` and `script.js`
-
-You can do it by terminal or gui
+Now, create two files, `template.config.js` and `script.js` You can do this in the terminal or using a GUI:
 
 ```bash
 touch template.config.js script.js
 ```
 
-The template config file consist the details about the template name, placeholder etc,
-and script.js will execute after the successfull template initialization
+The `template.config.js` file contains details about the template name, placeholders, etc.,
+while `script.js` will execute after the successful template initialization.
 
 Add following in the `template.config.js`
 
@@ -81,9 +77,10 @@ module.exports = {
 };
 ```
 
-postInitScript is optioonal if you don't want to execute anything after initialization you can simply just comment the 3rd line
+The `postInitScript` is optional. If you don't want to execute anything after initialization,
+you can simply comment out the 3rd line.
 
-inside `script.js` add this
+Inside `script.js` add this
 
 ```js
 #!/usr/bin/env node
@@ -93,8 +90,8 @@ console.log('This is post init script');
 
 ### Step 3 :
 
-Generate the a new Project with `Placeholder` name in `template` directory , to do than you can simply run the
-following command
+Generate a new project with a `Placeholder` name in the `template` directory.
+You can do this by running the following command:
 
 ```bash
 npx react-native init ProjectName --directory template
@@ -104,21 +101,32 @@ npx react-native init ProjectName --directory template
 
 - Go to template
 - Run the application in `android` and `ios`
-- Make change
+- Make changes and configure your app according to your need
 
 ### Step 4 :
 
-Now to generate a new project using your template you have to host it on github on a public repository
-Just push the code to github
+To generate a new project using your template, you have to host it on GitHub in a public repository.
 
 ### Step 5 :
 
-Create a new project using your boilerplate by using `url`
+Create a new project using your boilerplate by using URL
 
 ```bash
-npx react-native init YourAppName --template https://github.com/hrithik73/rn-boilerplate
+npx react-native init YourAppName --template https://github.com/hrithik73/rn-starter
 ```
 
-Replace the YourAppName to whatever the application name you want and the github url will be your boilerplate's github url
+Replace the `YourAppName` to whatever the application name you want and the github url will be your boilerplate's github url
 
-Note : For some reason having the issue with postInitScript , if you you also face this just comment for now
+### Step 6:
+
+You can generate project with github url alone but if you whish to make make a library or publish on npm ,
+you can simply publish using `npm` cli and give a unique name for the project after that you can generate using the npm package name
+
+```bash
+npx react-native init YourAppName --template @hrithik73/rn-starter
+```
+
+You can checkout the the finished version of our boilerplate here
+
+[https://github.com/hrithik73/rn-starter](https://github.com/hrithik73/rn-starter)
+[https://www.npmjs.com/package/@hrithik73/rn-starter](https://www.npmjs.com/package/@hrithik73/rn-starter)

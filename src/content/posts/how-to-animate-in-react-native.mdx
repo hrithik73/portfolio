@@ -1,0 +1,134 @@
+---
+title: How to animate in react native
+date: 2023/09/21
+description: A guide on how to do animations in react native with re-animated
+tag: react,react-native , boilerplate , starter , rn-starter , app-dev
+---
+
+When doing animations in react native we have two options either to use `Animated` from react-native or you library called
+[react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/)
+
+React Native Reanimated provide the better APIs than react-native's `Animated`
+In this blog post we are going to explore the `react-native-reanimated` library and how can we create animations
+We will go from basic to complex
+
+## Setup the library
+
+If you already have react native project setup skip this step
+
+```bash
+npx react-native init RNAnimation
+```
+
+```bash
+yarn add react-native-reanimated
+```
+
+Add `react-native-reanimated/plugin` plugin to your `babel.config.js`
+
+```js
+  module.exports = {
+    presets: [
+      ... // don't add it here :)
+    ],
+    plugins: [
+      ... // Other plugin
+      'react-native-reanimated/plugin',
+    ],
+  };
+```
+
+The plugin performs automatic workletization of certain functions used with Reanimated to reduce the amount of boilerplate code.
+
+Note: `react-native-reanimated/plugin` has to be listed last.
+
+## Glossary
+
+Here we are going to understand some of the terminologies used in this library
+
+### Shared Value
+
+A shared value is a driving factor of all your animations.
+You can think of it as a React state which is automagically kept in sync between the “JavaScript” and the “native” side of your app (hence the name).
+You create shared values using a useSharedValue hook:
+
+```jsx
+import { useSharedValue } from 'react-native-reanimated';
+```
+
+```jsx
+const sv = useSharedValue(0);
+```
+
+### Animated component
+
+Animated components are components which Reanimated can animate.
+Reanimated comes with just a handful of built-in components like `Animated.View`, `Animated.ScrollView`, or `Animated.ScrollView`.
+
+### Animation function
+
+Animation functions are functions which let you create animations. They are building blocks that describe how your animations should behave.
+
+Reanimated comes with 3 built-in animation functions:
+
+`withSpring` lets you create spring-based animation
+`withTiming` lets you create an animation based on duration and easing
+`withDecay` lets you create animations that mimic objects in motion that move with a given deceleration rate
+These functions can be combined with animation modifiers to create rich and complex animations.
+
+### Worklet
+
+Worklets are short-running JavaScript functions that can be run on the UI thread.
+They can also be run on a JavaScript thread just as you would run a function in your code.
+Most of the time when working with Reanimated the code is automatically workletized and run on the UI thread by default.
+
+### JavaScript thread
+
+JavaScript thread (or JS thread for short) is responsible for handling JavaScript code execution in the app.
+This is the primary place where the React Native app code is executed.
+
+### UI thread
+
+UI thread is responsible for handling user interface updates. Also known as Main thread.
+You can learn more about it by reading the Threading model article in the official React Native docs.
+
+Enough defination let's build something
+
+Let's make a basic animation
+
+![](assets/basic.mov)
+
+```jsx
+import { Button, View } from 'react-native';
+import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
+
+export default function Basic() {
+  const width = useSharedValue(100);
+
+  const handleIncrement = () => {
+    width.value = withSpring(width.value + 50);
+  };
+  const handlerDecrement = () => {
+    if (width.value >= 0) {
+      width.value = withSpring(width.value - 50);
+    }
+  };
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Animated.View
+        style={{
+          width,
+          height: width,
+          borderRadius: width.value / 2,
+          backgroundColor: 'violet',
+        }}
+      />
+      <View style={{ bottom: 50, position: 'absolute' }}>
+        <Button onPress={handleIncrement} title='Make Bigger' />
+        <Button onPress={handlerDecrement} title='Make Smaller' />
+      </View>
+    </View>
+  );
+}
+```
