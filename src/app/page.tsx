@@ -5,9 +5,9 @@ export default function Home() {
         <h4 className='text-xl'>Hello, I am </h4>
         <h1 className='text-5xl font-bold mt-2'>Hritik Singh</h1>
         <h3 className='mt-5'>
-          Frontend Engineer with 2 years of experience building web and mobile
-          apps using react. I am passionate about learning new technologies and
-          building innovative solutions.
+          Frontend Engineer with 2 years of experience in building web and
+          mobile apps using react. I am passionate about learning new
+          technologies and building innovative solutions.
         </h3>
         <h3 className='text-2xl font-bold mt-14 underline pb-5'>Work</h3>
         <h3>
