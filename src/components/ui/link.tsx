@@ -8,7 +8,7 @@ interface LinkProps {
 
 const LinkTag = ({ link, children }: LinkProps) => {
   return (
-    <Link className='m-5 cursor-pointer hover:underline' href={link}>
+    <Link className='mr-5 my-2 cursor-pointer hover:underline' href={link}>
       {children}
     </Link>
   );

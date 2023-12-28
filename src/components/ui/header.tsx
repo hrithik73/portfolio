@@ -4,11 +4,11 @@ import LinkTag from './link';
 
 const Header = () => {
   return (
-    <header className='flex items-center justify-between'>
+    <header className='flex items-center justify-between my-10'>
       <LinkTag link={'/'}>
         <PiSquare />
       </LinkTag>
-      <div className='p-10 mx-10 flex justify-end items-center'>
+      <div className='flex justify-end items-center mr-4'>
         <LinkTag link={'/posts'}>Blog</LinkTag>
         <LinkTag link={'/projects'}>Projects</LinkTag>
         <ModeToggle />

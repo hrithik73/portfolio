@@ -4,6 +4,7 @@ import { ThemeProvider } from '~/components/theme-provider';
 import { Analytics } from '~/components/analytics';
 import Header from '~/components/ui/header';
 import Footer from '~/components/ui/footer';
+import { TailwindIndicator } from '~/components/tailwind-indicator';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,12 +24,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <div className='max-w-2xl mx-auto py-10 px-4'>
+          <div className='max-w-2xl mx-auto px-4'>
             <Header />
             <main>{children}</main>
             <Footer />
           </div>
           <Analytics />
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
     </html>
