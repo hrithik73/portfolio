@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className='flex flex-col mb-28 items-center justify-between '>
+    <main className='flex flex-col mb-10 items-center justify-between '>
       <div className='mt-5'>
         <h4 className='text-xl'>Hello, I am </h4>
         <h1 className='text-5xl font-bold mt-2'>Hritik Singh</h1>
