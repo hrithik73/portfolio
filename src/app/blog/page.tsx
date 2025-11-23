@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -39,12 +41,56 @@ const blogs = [
 ];
 
 export default function BlogPage() {
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  // Initialize key with stable literal to avoid hydration mismatch
+  const [animationKey, setAnimationKey] = useState<string>("/blog");
+  const prevPathnameRef = useRef<string | null>(null);
+  const isInitialMount = useRef(true);
+
+  // Handle initial mount and hydration
+  useEffect(() => {
+    setMounted(true);
+    prevPathnameRef.current = pathname || "/blog";
+    isInitialMount.current = false;
+  }, []);
+
+  // Track pathname changes and reset animations only when navigating TO this page
+  useEffect(() => {
+    // Skip on initial mount (handled by the effect above)
+    if (isInitialMount.current) return;
+
+    const currentPathname = pathname || "/blog";
+    const prevPathname = prevPathnameRef.current;
+
+    // Only reset animations when navigating TO this page (pathname is "/blog")
+    // and pathname actually changed from a different route
+    if (mounted && prevPathname !== null && prevPathname !== currentPathname && currentPathname === "/blog") {
+      // Update key only when pathname actually changes (navigation between routes)
+      // This triggers animation reset without causing hydration issues
+      setAnimationKey(currentPathname);
+      setMounted(false);
+      
+      // Capture pathname at the time of effect execution to avoid stale closure
+      const capturedPathname = currentPathname;
+      const timer = setTimeout(() => {
+        setMounted(true);
+        prevPathnameRef.current = capturedPathname;
+      }, 10);
+      return () => clearTimeout(timer);
+    } else {
+      // Update ref even if we don't reset animations (for tracking purposes)
+      prevPathnameRef.current = currentPathname;
+    }
+  }, [pathname]);
+  
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
       <motion.div
+        key={animationKey}
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={mounted ? "visible" : "hidden"}
         className="space-y-16"
       >
         <motion.div variants={itemVariants}>
@@ -56,7 +102,7 @@ export default function BlogPage() {
         <div className="space-y-12">
           {blogs.map((yearGroup, yearIndex) => (
             <motion.div
-              key={yearIndex}
+              key={`${animationKey}-${yearIndex}`}
               variants={itemVariants}
               className="space-y-6"
             >
@@ -66,10 +112,9 @@ export default function BlogPage() {
               <div className="space-y-4">
                 {yearGroup.posts.map((post, postIndex) => (
                   <motion.div
-                    key={postIndex}
+                    key={`${animationKey}-${yearIndex}-${postIndex}`}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ delay: postIndex * 0.1 }}
                   >
                     <Link
