@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Sun, Moon, Monitor } from "lucide-react";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -22,40 +23,40 @@ export function ThemeSwitcher() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setTheme("light")}
-        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+        className={`rounded-full p-2 transition-colors ${
           theme === "light"
             ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-zinc-100"
             : "text-zinc-600 dark:text-zinc-400"
         }`}
         aria-label="Light theme"
       >
-        Light
+        <Sun className="h-4 w-4" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setTheme("dark")}
-        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+        className={`rounded-full p-2 transition-colors ${
           theme === "dark"
             ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-zinc-100"
             : "text-zinc-600 dark:text-zinc-400"
         }`}
         aria-label="Dark theme"
       >
-        Dark
+        <Moon className="h-4 w-4" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setTheme("system")}
-        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+        className={`rounded-full p-2 transition-colors ${
           theme === "system"
             ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-zinc-100"
             : "text-zinc-600 dark:text-zinc-400"
         }`}
         aria-label="System theme"
       >
-        System
+        <Monitor className="h-4 w-4" />
       </motion.button>
     </div>
   );
