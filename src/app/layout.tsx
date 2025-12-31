@@ -1,19 +1,20 @@
-import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from 'next';
+import { Space_Grotesk } from 'next/font/google';
+import './globals.css';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  variable: '--font-space-grotesk',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
-  title: "Hritik Singh — Mobile App Developer",
-  description: "Mobile app developer with 4+ years of experience building flagship React Native apps. Crafting pixel-perfect, smooth mobile experiences.",
+  title: 'Hritik Singh — Mobile App Developer',
+  description:
+    'Mobile app developer with 4+ years of experience building flagship React Native apps. Crafting pixel-perfect, smooth mobile experiences.',
 };
 
 export default function RootLayout({
@@ -22,14 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${spaceGrotesk.variable} font-sans antialiased`}
-      >
+    <html lang='en' suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col bg-white dark:bg-zinc-950">
+          <div className='flex min-h-screen flex-col bg-white dark:bg-zinc-950'>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className='flex-1'>{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

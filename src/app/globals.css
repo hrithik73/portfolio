@@ -1,4 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+html {
+  scroll-behavior: smooth;
+}
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -19,7 +23,8 @@
 }
 
 * {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 body {
@@ -30,4 +35,137 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Legacy Prism styles - only apply if not using rehype-pretty-code */
+pre:not([data-theme]) code[class*='language-'],
+pre:not([data-theme]) pre[class*='language-'] {
+  color: #18181b;
+  background: none;
+  text-shadow: none;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  font-size: 0.875rem;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.6;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* rehype-pretty-code styles - Shiki syntax highlighting */
+pre[data-theme] {
+  position: relative;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  /* Let rehype-pretty-code handle background via inline styles */
+  /* We'll override for dark mode */
+}
+
+.dark pre[data-theme] {
+  /* Override background for dark mode */
+  background: #161b22 !important;
+  border: 1px solid #30363d !important;
+}
+
+pre[data-theme] > code {
+  display: grid;
+  min-width: 100%;
+  overflow-x: auto;
+  tab-size: 2;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  /* Let Shiki handle text colors via inline styles */
+}
+
+pre[data-theme] code {
+  background: transparent !important;
+}
+
+/* Syntax highlighting line numbers and highlights */
+pre[data-theme] .line {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+pre[data-theme] .line[data-highlighted='true'],
+pre[data-theme] .line--highlighted {
+  background: rgba(175, 184, 193, 0.15) !important;
+  padding-left: calc(1rem - 3px);
+  border-left: 3px solid #0969da !important;
+}
+
+.dark pre[data-theme] .line[data-highlighted='true'],
+.dark pre[data-theme] .line--highlighted {
+  background: rgba(110, 118, 129, 0.15) !important;
+  border-left-color: #58a6ff !important;
+}
+
+/* Scrollbar for code blocks */
+pre[data-theme]::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre[data-theme]::-webkit-scrollbar-track {
+  background: #e4e4e7;
+  border-radius: 4px;
+}
+
+pre[data-theme]::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border-radius: 4px;
+}
+
+pre[data-theme]::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+.dark pre[data-theme]::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.dark pre[data-theme]::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+.dark pre[data-theme]::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Code block wrapper for non-rehype-pretty-code blocks */
+pre:not([data-theme]) {
+  position: relative;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+}
+
+.dark pre:not([data-theme]) {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+/* Inline code (not in pre) */
+:not(pre) > code {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  background: #f4f4f5;
+  color: #18181b;
+  font-size: 0.875rem;
+}
+
+.dark :not(pre) > code {
+  background: #27272a;
+  color: #e4e4e7;
 }
