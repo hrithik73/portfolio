@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
+import Script from 'next/script';
+
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Header } from '@/components/Header';
@@ -25,6 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
+      <Script
+        src='https://cloud.umami.is/script.js'
+        data-website-id='f2e9b564-6d4d-4591-9cf9-b414e1700855'
+      />
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider>
           <AnimatedBackground />
