@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { AnimatedBackground } from '@/components/AnimatedBackground';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -26,7 +27,8 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <div className='flex min-h-screen flex-col bg-white dark:bg-zinc-950'>
+          <AnimatedBackground />
+          <div className='flex min-h-screen flex-col'>
             <Header />
             <main className='flex-1'>{children}</main>
             <Footer />

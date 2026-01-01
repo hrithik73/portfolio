@@ -70,17 +70,14 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <span className='inline-flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4'>
-            <span className='relative flex h-2 w-2'>
-              <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75'></span>
-              <span className='relative inline-flex rounded-full h-2 w-2 bg-emerald-500'></span>
-            </span>
-            Available for new opportunities
+          <span className='inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 font-medium mb-4'>
+            <span>☕</span>
+            Fueled by chai & code
           </span>
         </motion.div>
 
-        <h2 className='text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 leading-tight'>
-          Building delightful
+        <h2 className='text-3xl md:text-4xl font-bold mb-6 leading-tight'>
+          <span className='text-shimmer'>Building delightful</span>
           <br />
           <span className='text-zinc-400 dark:text-zinc-500'>
             mobile experiences
@@ -118,8 +115,8 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               {company.name}
             </motion.a>
@@ -140,7 +137,7 @@ export default function Home() {
               target='_blank'
               rel='noopener noreferrer'
               className='group block p-4 -mx-4 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors'
-              whileHover={{ x: 4 }}
+              whileHover={{ x: 2 }}
             >
               <div className='flex items-start justify-between gap-4'>
                 <div>
@@ -157,7 +154,7 @@ export default function Home() {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className='text-xs px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+                    className='text-xs px-2 py-1 rounded-md bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400'
                   >
                     {t}
                   </span>
@@ -183,7 +180,7 @@ export default function Home() {
         </div>
         <div className='space-y-1'>
           {blogs.map((blog, i) => (
-            <motion.div key={i} whileHover={{ x: 4 }}>
+            <motion.div key={i} whileHover={{ x: 2 }}>
               <Link
                 href={blog.href}
                 className='group flex items-center justify-between py-3 -mx-4 px-4 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors'
@@ -219,8 +216,8 @@ export default function Home() {
                   ? undefined
                   : 'noopener noreferrer'
               }
-              className='group w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-sm text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all'
-              whileHover={{ scale: 1.1, y: -2 }}
+              className='group w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-sm text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all'
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               title={link.name}
             >
