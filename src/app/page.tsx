@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Twitter, Github, Linkedin, Mail } from 'lucide-react';
 
 const companies = [
   { name: 'BharatPe', href: 'https://bharatpe.com' },
@@ -35,10 +35,14 @@ const blogs = [
 ];
 
 const socialLinks = [
-  { name: 'X', href: 'https://x.com/hrithik73_', icon: '𝕏' },
-  { name: 'GitHub', href: 'https://github.com/hrithik73', icon: '◉' },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/hrithik73', icon: 'in' },
-  { name: 'Email', href: 'mailto:shrithik404@gmail.com', icon: '@' },
+  { name: 'X', href: 'https://x.com/hrithik73_', icon: Twitter },
+  { name: 'GitHub', href: 'https://github.com/hrithik73', icon: Github },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/hrithik73',
+    icon: Linkedin,
+  },
+  { name: 'Email', href: 'mailto:shrithik404@gmail.com', icon: Mail },
 ];
 
 const fadeInUp = {
@@ -221,7 +225,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               title={link.name}
             >
-              <span className='font-medium'>{link.icon}</span>
+              <link.icon className='w-4 h-4' />
             </motion.a>
           ))}
         </div>
